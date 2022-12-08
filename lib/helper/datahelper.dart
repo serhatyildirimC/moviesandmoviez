@@ -24,7 +24,7 @@ class TextModifier extends StatelessWidget {
           style: GoogleFonts.breeSerif(color: color, fontSize: size));
     } else {
       return Text(text,
-          maxLines: 11,
+          maxLines: 10,
           style: GoogleFonts.breeSerif(color: color, fontSize: size));
     }
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
-import 'package:moviesandmoviez/main.dart';
 
 class DetailsPage extends StatelessWidget {
   final String name, description, bannerurl, posterurl, launchOn;
@@ -20,7 +19,6 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var addedfavorite;
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(

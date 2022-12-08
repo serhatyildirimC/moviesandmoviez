@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
-
 import 'details.dart';
 
 class Favorites extends StatefulWidget {
@@ -16,8 +15,34 @@ class Favorites extends StatefulWidget {
 class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
+    if (widget.favorites.isEmpty) {
+      return Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const TextModifier(
+              text: 'Your Favorite Movies',
+              color: Colors.white,
+              size: 30,
+              con: false),
+        ),
+        body: Center(
+          child: Container(
+            color: Colors.transparent,
+            child: const TextModifier(
+              text: 'There is no favorite film',
+              color: Colors.white,
+              size: 20,
+              con: false,
+            ),
+          ),
+        ),
+      );
+    }
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const TextModifier(
             text: 'Your Favorite Movies',
             color: Colors.white,
@@ -36,7 +61,7 @@ class _FavoritesState extends State<Favorites> {
                   MaterialPageRoute(
                     builder: (context) => DetailsPage(
                         id: widget.favorites[index]['id'],
-                        name: widget.favorites[index]['title'] ??
+                        name: widget.favorites[index]['isim'] ??
                             widget.favorites[index]['name'],
                         description: widget.favorites[index]['overview'],
                         bannerurl: 'Http://image.tmdb.org/t/p/w500' +
@@ -81,11 +106,14 @@ class _FavoritesState extends State<Favorites> {
                         const SizedBox(
                           height: 8,
                         ),
-                        TextModifier(
-                          text: (widget.favorites[index]['overview']),
-                          color: Colors.white,
-                          size: 14,
-                          con: true,
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: (8.0)),
+                          child: TextModifier(
+                            text: (widget.favorites[index]['overview']),
+                            color: Colors.white,
+                            size: 14,
+                            con: true,
+                          ),
                         )
                       ],
                     ),

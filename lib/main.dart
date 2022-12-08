@@ -31,10 +31,10 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   List trendingmovies = [];
   List topratedmovies = [];
   List tvshows = [];
@@ -103,9 +103,5 @@ class _MyHomePageState extends State<MyHomePage> {
         TvShows(tvshows: tvshows),
       ]),
     );
-  }
-
-  void addFavorite(addedmovie) {
-    favorites.add(addedmovie);
   }
 }
