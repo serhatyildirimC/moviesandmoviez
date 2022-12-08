@@ -18,6 +18,7 @@ class TopratedMovies extends StatelessWidget {
           text: 'Top Rated Movies',
           size: 26,
           color: Colors.white,
+          con: false,
         ),
         SizedBox(
           height: 270,
@@ -67,10 +68,10 @@ class TopratedMovies extends StatelessWidget {
         ),
       ),
       TextModifier(
-        text: toprated[index]['title'],
-        size: 16,
-        color: Colors.white,
-      )
+          text: toprated[index]['title'],
+          size: 16,
+          color: Colors.white,
+          con: false)
     ]);
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
+import 'package:moviesandmoviez/main.dart';
 
 class DetailsPage extends StatelessWidget {
   final String name, description, bannerurl, posterurl, launchOn;
   final String vote;
+
   final int id;
   const DetailsPage(
       {Key? key,
@@ -18,6 +20,7 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var addedfavorite;
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
@@ -46,39 +49,44 @@ class DetailsPage extends StatelessWidget {
               Positioned(
                 bottom: 10,
                 child: TextModifier(
-                  text: '⭐  Avarage Vote - $vote',
-                  size: 20,
-                  color: Colors.white,
-                ),
+                    text: '⭐  Avarage Vote - $vote',
+                    size: 20,
+                    color: Colors.white,
+                    con: false),
               ),
             ]),
           ),
           const SizedBox(
             height: 15,
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: TextModifier(
-              text: name,
-              size: 24,
-              color: Colors.white,
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: TextModifier(
+                      text: name, size: 24, color: Colors.white, con: false),
+                ),
+              ),
+              IconButton(
+                onPressed: (() {}),
+                icon: const Icon(Icons.favorite),
+                color: Colors.red,
+              )
+            ],
           ),
           Container(
             padding: const EdgeInsets.all(10),
             child: TextModifier(
-              text: 'Releasing on : $launchOn',
-              size: 20,
-              color: Colors.white,
-            ),
+                text: 'Releasing on : $launchOn',
+                size: 20,
+                color: Colors.white,
+                con: false),
           ),
           Container(
             padding: const EdgeInsets.all(15),
             child: TextModifier(
-              text: description,
-              size: 16,
-              color: Colors.white,
-            ),
+                text: description, size: 16, color: Colors.white, con: false),
           )
         ],
       ),

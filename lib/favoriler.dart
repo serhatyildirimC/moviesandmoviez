@@ -19,10 +19,10 @@ class _FavoritesState extends State<Favorites> {
     return Scaffold(
       appBar: AppBar(
         title: const TextModifier(
-          text: 'Your Favorite Movies',
-          color: Colors.white,
-          size: 30,
-        ),
+            text: 'Your Favorite Movies',
+            color: Colors.white,
+            size: 30,
+            con: false),
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
@@ -69,19 +69,24 @@ class _FavoritesState extends State<Favorites> {
                   ),
                   Expanded(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextModifier(
-                            text: widget.favorites[index]['title'] ??
-                                widget.favorites[index]['name'],
-                            color: Colors.white,
-                            size: 20),
+                          text: widget.favorites[index]['title'] ??
+                              widget.favorites[index]['name'],
+                          color: Colors.white,
+                          size: 20,
+                          con: false,
+                        ),
                         const SizedBox(
                           height: 8,
                         ),
                         TextModifier(
-                            text: (widget.favorites[index]['overview']),
-                            color: Colors.white,
-                            size: 14)
+                          text: (widget.favorites[index]['overview']),
+                          color: Colors.white,
+                          size: 14,
+                          con: true,
+                        )
                       ],
                     ),
                   ),

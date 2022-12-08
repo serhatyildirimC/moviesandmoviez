@@ -14,10 +14,7 @@ class TvShows extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const TextModifier(
-          text: 'Tv Shows ',
-          size: 26,
-          color: Colors.white,
-        ),
+            text: 'Tv Shows ', size: 26, color: Colors.white, con: false),
         SizedBox(
           height: 220,
           child: ListView.builder(
@@ -66,10 +63,10 @@ class TvShows extends StatelessWidget {
                     ),
                     Container(
                       child: TextModifier(
-                        text: tvshows[index]['name'] ?? 'N/A',
-                        size: 16,
-                        color: Colors.white,
-                      ),
+                          text: tvshows[index]['name'] ?? 'N/A',
+                          size: 16,
+                          color: Colors.white,
+                          con: false),
                     )
                   ]),
                 ),

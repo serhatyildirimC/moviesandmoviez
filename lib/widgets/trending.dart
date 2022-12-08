@@ -15,10 +15,7 @@ class TrendingMovies extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const TextModifier(
-          text: 'Trending',
-          size: 26,
-          color: Colors.white,
-        ),
+            text: 'Trending', size: 26, color: Colors.white, con: false),
         SizedBox(
           height: 270,
           child: ListView.builder(
@@ -61,10 +58,11 @@ class TrendingMovies extends StatelessWidget {
                       ),
                     ),
                     TextModifier(
-                      text: trending[index]['title'] ?? trending[index]['name'],
-                      size: 16,
-                      color: Colors.white,
-                    )
+                        text:
+                            trending[index]['title'] ?? trending[index]['name'],
+                        size: 16,
+                        color: Colors.white,
+                        con: false)
                   ]),
                 ),
               );

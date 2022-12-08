@@ -15,7 +15,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  @override
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Favorites(favorites: trendingmovies),
+                  builder: (context) => Favorites(favorites: favorites),
                 ),
               );
             }),
@@ -86,10 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
         title: const TextModifier(
-          text: 'Movies And Moviez ❤️',
-          size: 22,
-          color: Colors.white,
-        ),
+            text: 'Movies And Moviez ❤️',
+            size: 22,
+            color: Colors.white,
+            con: false),
         backgroundColor: Colors.transparent,
       ),
       body: ListView(children: [
@@ -103,5 +103,9 @@ class _MyHomePageState extends State<MyHomePage> {
         TvShows(tvshows: tvshows),
       ]),
     );
+  }
+
+  void addFavorite(addedmovie) {
+    favorites.add(addedmovie);
   }
 }

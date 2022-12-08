@@ -15,10 +15,7 @@ class UpComingMovies extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const TextModifier(
-          text: 'Coming Soon',
-          size: 26,
-          color: Colors.white,
-        ),
+            text: 'Coming Soon', size: 26, color: Colors.white, con: false),
         SizedBox(
           height: 290,
           child: ListView.builder(
@@ -61,10 +58,11 @@ class UpComingMovies extends StatelessWidget {
                       ),
                     ),
                     TextModifier(
-                      text: upcoming[index]['title'] ?? upcoming[index]['name'],
-                      size: 16,
-                      color: Colors.white,
-                    )
+                        text:
+                            upcoming[index]['title'] ?? upcoming[index]['name'],
+                        size: 16,
+                        color: Colors.white,
+                        con: false)
                   ]),
                 ),
               );

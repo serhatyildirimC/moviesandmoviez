@@ -7,17 +7,25 @@ class TextModifier extends StatelessWidget {
   final String text;
   final Color color;
   final double size;
+  final bool con;
 
   const TextModifier({
     Key? key,
     required this.text,
     required this.color,
     required this.size,
+    required this.con,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-        style: GoogleFonts.breeSerif(color: color, fontSize: size));
+    if (con == false) {
+      return Text(text,
+          style: GoogleFonts.breeSerif(color: color, fontSize: size));
+    } else {
+      return Text(text,
+          maxLines: 11,
+          style: GoogleFonts.breeSerif(color: color, fontSize: size));
+    }
   }
 }
