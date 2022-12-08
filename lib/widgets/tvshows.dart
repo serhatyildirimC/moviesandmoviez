@@ -30,7 +30,7 @@ class TvShows extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DetailsPage(
-                          id: ((index + 1) * 10000),
+                          id: (tvshows[index]['id'] * 1000),
                           name: tvshows[index]['name'],
                           description: tvshows[index]['overview'],
                           bannerurl: 'Http://image.tmdb.org/t/p/w500' +
@@ -47,7 +47,7 @@ class TvShows extends StatelessWidget {
                   width: 250,
                   child: Column(children: [
                     Hero(
-                      tag: ((index + 1) * 10000),
+                      tag: (tvshows[index]['id'] * 1000),
                       child: Container(
                         height: 140,
                         width: 250,

@@ -31,7 +31,7 @@ class TopratedMovies extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DetailsPage(
-                          id: ((index + 1) * 100),
+                          id: toprated[index]['id'],
                           name: toprated[index]['title'],
                           description: toprated[index]['overview'],
                           bannerurl: 'Http://image.tmdb.org/t/p/w500' +
@@ -55,7 +55,7 @@ class TopratedMovies extends StatelessWidget {
   trCreate(int index) {
     return Column(children: [
       Hero(
-        tag: ((index + 1) * 100),
+        tag: toprated[index]['id'],
         child: Container(
           height: 200,
           decoration: BoxDecoration(

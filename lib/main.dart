@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:moviesandmoviez/favoriler.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
 import 'package:moviesandmoviez/widgets/coming.dart';
 import 'package:moviesandmoviez/widgets/toprated.dart';
@@ -38,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List topratedmovies = [];
   List tvshows = [];
   List upcoming = [];
+  List favorites = [];
 
   final String apikey = 'f7edeec72fc02f136fee6ab050961635';
   final String readaccesstoken =
@@ -53,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         logConfig: const ConfigLogger(showLogs: true, showErrorLogs: true));
     Map trendingresults = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topratedresults = await tmdbWithCustomLogs.v3.movies.getTopRated();
-    Map tvshowsresults = await tmdbWithCustomLogs.v3.tv.getTopRated();
+    Map tvshowsresults = await tmdbWithCustomLogs.v3.tv.getPopular();
     Map upcomingresults = await tmdbWithCustomLogs.v3.movies.getUpcoming();
 
     setState(() {
@@ -61,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
       topratedmovies = topratedresults['results'];
       tvshows = tvshowsresults['results'];
       upcoming = upcomingresults['results'];
-      print(topratedresults);
     });
   }
 
@@ -70,6 +71,20 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: (() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Favorites(favorites: trendingmovies),
+                ),
+              );
+            }),
+            icon: const Icon(Icons.favorite),
+            color: Colors.red,
+          )
+        ],
         title: const TextModifier(
           text: 'Movies And Moviez ❤️',
           size: 22,

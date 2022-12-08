@@ -31,7 +31,7 @@ class UpComingMovies extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => DetailsPage(
-                          id: ((index + 1) * 1000000),
+                          id: upcoming[index]['id'],
                           name: upcoming[index]['title'] ??
                               upcoming[index]['name'],
                           description: upcoming[index]['overview'],
@@ -49,7 +49,7 @@ class UpComingMovies extends StatelessWidget {
                   width: 140,
                   child: Column(children: [
                     Hero(
-                      tag: (index + 1) * 1000000,
+                      tag: upcoming[index]['id'],
                       child: Container(
                         height: 200,
                         decoration: BoxDecoration(
