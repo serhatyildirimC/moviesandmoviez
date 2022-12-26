@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
+import 'package:moviesandmoviez/model/moviee.dart';
 
 class DetailsPage extends StatelessWidget {
   final String name, description, bannerurl, posterurl, launchOn;
   final String vote;
 
   final int id;
-  const DetailsPage(
-      {Key? key,
-      required this.name,
-      required this.description,
-      required this.bannerurl,
-      required this.posterurl,
-      required this.vote,
-      required this.launchOn,
-      required this.id})
-      : super(key: key);
+
+  const DetailsPage({
+    Key? key,
+    required this.name,
+    required this.description,
+    required this.bannerurl,
+    required this.posterurl,
+    required this.vote,
+    required this.launchOn,
+    required this.id,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,24 @@ class DetailsPage extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: (() {}),
+                onPressed: (() {
+                  bool varmi = false;
+                  var addedmoviee = Moviee(id, name, posterurl, description,
+                      bannerurl, vote, launchOn, 0);
+                  var box = Hive.box<Moviee>('favorites');
+
+                  for (var element in box.keys) {
+                    if (id.bitLength == element) {
+                      box.delete(id.bitLength);
+                      varmi = true;
+                    }
+                  }
+                  if (varmi == false) {
+                    box.put(id.bitLength, addedmoviee);
+                  }
+
+                  debugPrint(box.length.toString());
+                }),
                 icon: const Icon(Icons.favorite),
                 color: Colors.red,
               )

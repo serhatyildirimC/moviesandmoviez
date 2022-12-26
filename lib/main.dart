@@ -1,15 +1,22 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:moviesandmoviez/favoriler.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
+import 'package:moviesandmoviez/model/moviee.dart';
 import 'package:moviesandmoviez/widgets/coming.dart';
 import 'package:moviesandmoviez/widgets/toprated.dart';
 import 'package:moviesandmoviez/widgets/trending.dart';
 import 'package:moviesandmoviez/widgets/tvshows.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter('m&m');
+  Hive.registerAdapter(MovieeAdapter());
+  // ignore: unused_local_variable
+  var box = await Hive.openBox<Moviee>('favorites');
+
   runApp(const MyApp());
 }
 
@@ -39,7 +46,7 @@ class MyHomePageState extends State<MyHomePage> {
   List topratedmovies = [];
   List tvshows = [];
   List upcoming = [];
-  List favorites = [];
+  List<Moviee> favorites = [];
 
   final String apikey = 'f7edeec72fc02f136fee6ab050961635';
   final String readaccesstoken =
@@ -77,7 +84,7 @@ class MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Favorites(favorites: favorites),
+                  builder: (context) => Favorites(),
                 ),
               );
             }),
@@ -86,7 +93,7 @@ class MyHomePageState extends State<MyHomePage> {
           )
         ],
         title: const TextModifier(
-            text: 'Movies And Moviez ❤️',
+            text: 'Movies And Moviez ',
             size: 22,
             color: Colors.white,
             con: false),
