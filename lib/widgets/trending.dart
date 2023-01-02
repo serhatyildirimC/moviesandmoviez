@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
 
 import '../details.dart';
+import '../pages/trending.dart';
 
 class TrendingMovies extends StatelessWidget {
   final List trending;
@@ -14,8 +15,18 @@ class TrendingMovies extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const TextModifier(
-            text: 'Trending', size: 26, color: Colors.white, con: false),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TrendingPage(),
+              ),
+            );
+          },
+          child: const TextModifier(
+              text: 'Trending', size: 26, color: Colors.white, con: false),
+        ),
         SizedBox(
           height: 270,
           child: ListView.builder(

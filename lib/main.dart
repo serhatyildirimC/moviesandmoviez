@@ -5,6 +5,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:moviesandmoviez/favoriler.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
 import 'package:moviesandmoviez/model/moviee.dart';
+import 'package:moviesandmoviez/pages/search.dart';
 import 'package:moviesandmoviez/widgets/coming.dart';
 import 'package:moviesandmoviez/widgets/toprated.dart';
 import 'package:moviesandmoviez/widgets/trending.dart';
@@ -80,6 +81,17 @@ class MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         actions: [
           IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Searching(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.search),
+          ),
+          IconButton(
             onPressed: (() {
               Navigator.push(
                 context,
@@ -90,7 +102,7 @@ class MyHomePageState extends State<MyHomePage> {
             }),
             icon: const Icon(Icons.favorite),
             color: Colors.red,
-          )
+          ),
         ],
         title: const TextModifier(
             text: 'Movies And Moviez ',

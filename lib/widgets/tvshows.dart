@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:moviesandmoviez/details.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
 
+import '../pages/twshows.dart';
+
 class TvShows extends StatelessWidget {
   final List tvshows;
   const TvShows({Key? key, required this.tvshows}) : super(key: key);
@@ -13,8 +15,18 @@ class TvShows extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(15),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const TextModifier(
-            text: 'Tv Shows ', size: 26, color: Colors.white, con: false),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TvShowsPage(),
+              ),
+            );
+          },
+          child: const TextModifier(
+              text: 'Tv Shows ', size: 26, color: Colors.white, con: false),
+        ),
         SizedBox(
           height: 220,
           child: ListView.builder(

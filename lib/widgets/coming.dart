@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
 
 import '../details.dart';
+import '../pages/comingsoon.dart';
 
 class UpComingMovies extends StatelessWidget {
   final List upcoming;
@@ -14,8 +15,18 @@ class UpComingMovies extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const TextModifier(
-            text: 'Coming Soon', size: 26, color: Colors.white, con: false),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ComingSoon(),
+              ),
+            );
+          },
+          child: const TextModifier(
+              text: 'Coming Soon', size: 26, color: Colors.white, con: false),
+        ),
         SizedBox(
           height: 290,
           child: ListView.builder(

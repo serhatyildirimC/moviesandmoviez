@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:moviesandmoviez/helper/datahelper.dart';
+import 'package:moviesandmoviez/pages/toprated.dart';
 
 import '../details.dart';
 
@@ -14,11 +15,21 @@ class TopratedMovies extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(15),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const TextModifier(
-          text: 'Top Rated Movies',
-          size: 26,
-          color: Colors.white,
-          con: false,
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TopRated(toprated: toprated),
+              ),
+            );
+          },
+          child: const TextModifier(
+            text: 'Top Rated Movies',
+            size: 26,
+            color: Colors.white,
+            con: false,
+          ),
         ),
         SizedBox(
           height: 270,
